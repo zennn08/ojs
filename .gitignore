@@ -1,1 +1,12 @@
 .superpowers/
+files_dir/*
+!files_dir/.gitkeep
+logs/*
+!logs/.gitkeep
+public_html/cache/*.php
+public_html/cache/t_compile/*
+!public_html/cache/t_compile/.gitkeep
+public_html/cache/t_cache/*
+!public_html/cache/t_cache/.gitkeep
+public_html/cache/opcache/*
+!public_html/cache/opcache/.gitkeep

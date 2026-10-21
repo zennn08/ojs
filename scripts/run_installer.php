@@ -1,16 +1,16 @@
 <?php
-require 'D:/Project/agrobisnis-ojs/public_html/tools/bootstrap.php';
+require dirname(__DIR__) . '/public_html/tools/bootstrap.php';
 
 class AutoInstaller extends \PKP\cliTool\CommandLineTool {
     public function execute() {
         $params = [
-            'locale' => 'en',
+            'locale' => getenv('OJS_LOCALE') ?: 'en',
             'additionalLocales' => ['id'],
-            'filesDir' => 'D:/Project/agrobisnis-ojs/files_dir',
-            'adminUsername' => 'admin',
-            'adminPassword' => 'admin12345',
-            'adminPassword2' => 'admin12345',
-            'adminEmail' => 'admin@agrobisnis.test',
+            'filesDir' => getenv('OJS_FILES_DIR') ?: (dirname(__DIR__) . '/files_dir'),
+            'adminUsername' => getenv('OJS_ADMIN_USER') ?: 'admin',
+            'adminPassword' => getenv('OJS_ADMIN_PASSWORD') ?: 'admin12345',
+            'adminPassword2' => getenv('OJS_ADMIN_PASSWORD') ?: 'admin12345',
+            'adminEmail' => getenv('OJS_ADMIN_EMAIL') ?: 'admin@agrobisnis.test',
             'databaseDriver' => 'mysqli',
             'databaseHost' => '127.0.0.1',
             'databaseUsername' => 'root',
@@ -26,7 +26,7 @@ class AutoInstaller extends \PKP\cliTool\CommandLineTool {
         if ($installer->execute()) {
             echo "INSTALL SUCCESS\n";
             if (!$installer->wroteConfig()) {
-                file_put_contents('D:/Project/agrobisnis-ojs/public_html/config.inc.php', $installer->getConfigContents());
+                file_put_contents(dirname(__DIR__) . '/public_html/config.inc.php', $installer->getConfigContents());
                 echo "WROTE CONFIG MANUALLY\n";
             } else {
                 echo "CONFIG WRITTEN AUTOMATICALLY\n";

@@ -150,7 +150,7 @@ name = ojs_agrobisnis
 ; unix_socket = /var/run/mysqld/mysqld.sock
 
 ; Database collation
-; collation = utf8_general_ci
+collation = utf8mb4_unicode_ci
 
 ; Enable database debug output (very verbose!)
 debug = Off
@@ -197,7 +197,7 @@ web_cache_hours = 1
 locale = en
 
 ; Database connection character set
-connection_charset = utf8
+connection_charset = utf8mb4
 
 
 ;;;;;;;;;;;;;;;;;
@@ -281,7 +281,7 @@ session_expire_on_close = Off
 remember_me_lifetime = 30
 
 ; The unique salt to use for generating password reset hashes
-salt = "YouMustSetASecretKeyHere!!"
+salt = "a6d2a87ee0265abcc3c1c580e164500d9220fee2925031118ecf057185d62de9"
 
 ; The unique secret used for encoding and decoding API keys
 api_key_secret = ""
@@ -642,5 +642,6 @@ expiration_days = 3
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [features]
+
 
 

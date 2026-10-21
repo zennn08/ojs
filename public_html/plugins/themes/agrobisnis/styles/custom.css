@@ -1,0 +1,261 @@
+/**
+ * Agribisnis Professional Academic Theme
+ * Open Journal Systems 3.5 LTS
+ * Palette: Forest Green (#1b4332, #2d6a4f), Harvest Gold (#c8963e, #d4a017)
+ */
+
+:root {
+  --agri-primary: #1b4332;
+  --agri-primary-light: #2d6a4f;
+  --agri-accent: #c8963e;
+  --agri-accent-light: #fdf6e7;
+  --agri-accent-hover: #b8860b;
+  --agri-bg: #fcfbf7;
+  --agri-surface: #ffffff;
+  --agri-text: #1f2937;
+  --agri-text-muted: #4b5563;
+  --agri-border: #e5e7eb;
+  --agri-font-serif: Georgia, "Merriweather", "Times New Roman", serif;
+  --agri-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--agri-bg);
+  color: var(--agri-text);
+  font-family: var(--agri-font-sans);
+  line-height: 1.65;
+}
+
+/* Header & Navigation Bar */
+.pkp_structure_head {
+  background-color: var(--agri-primary) !important;
+  border-bottom: 3px solid var(--agri-accent) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.pkp_site_name a {
+  color: #ffffff !important;
+  font-family: var(--agri-font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.pkp_navigation_primary_wrapper a,
+.pkp_navigation_user_wrapper a {
+  color: #f3f4f6 !important;
+  font-size: 0.925rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.pkp_navigation_primary_wrapper a:hover,
+.pkp_navigation_primary_wrapper a:focus,
+.pkp_navigation_user_wrapper a:hover,
+.pkp_navigation_user_wrapper a:focus {
+  background-color: var(--agri-primary-light) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  outline: 2px solid var(--agri-accent);
+  outline-offset: 2px;
+}
+
+/* Main Structure */
+.pkp_structure_content {
+  max-width: 1140px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--agri-primary);
+  font-family: var(--agri-font-serif);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Portal Homepage / Multi-Journal Cards */
+.page_index_site .journals {
+  margin-top: 24px;
+}
+
+.page_index_site .journals > h2 {
+  font-size: 1.75rem;
+  border-bottom: 2px solid var(--agri-border);
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.page_index_site .journals > h2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--agri-accent);
+}
+
+.page_index_site .journals ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.page_index_site .journals li {
+  background: var(--agri-surface);
+  border: 1px solid var(--agri-border);
+  border-left: 4px solid var(--agri-primary);
+  border-radius: 6px;
+  padding: 24px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.page_index_site .journals li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 67, 50, 0.08);
+  border-left-color: var(--agri-accent);
+}
+
+.page_index_site .journals li h3 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.page_index_site .journals li h3 a {
+  color: var(--agri-primary);
+  text-decoration: none;
+}
+
+.page_index_site .journals li h3 a:hover {
+  color: var(--agri-primary-light);
+  text-decoration: underline;
+}
+
+.page_index_site .journals li .description {
+  color: var(--agri-text-muted);
+  font-size: 0.95rem;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.page_index_site .journals li .links a {
+  display: inline-block;
+  background-color: var(--agri-primary);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 8px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  min-height: 44px;
+  line-height: 28px;
+}
+
+.page_index_site .journals li .links a:hover {
+  background-color: var(--agri-primary-light) !important;
+}
+
+/* Journal Issue & Article List */
+.current_issue {
+  background: var(--agri-surface);
+  border: 1px solid var(--agri-border);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.current_issue h2 {
+  font-size: 1.5rem;
+  color: var(--agri-primary);
+  margin-top: 0;
+}
+
+.obj_article_summary {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--agri-border);
+}
+
+.obj_article_summary:last-child {
+  border-bottom: none;
+}
+
+.obj_article_summary .title {
+  font-family: var(--agri-font-serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.obj_article_summary .title a {
+  color: var(--agri-primary);
+  text-decoration: none;
+}
+
+.obj_article_summary .title a:hover {
+  color: var(--agri-accent-hover);
+  text-decoration: underline;
+}
+
+.obj_article_summary .authors {
+  color: var(--agri-text-muted);
+  font-size: 0.925rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.obj_galley_link {
+  display: inline-flex !important;
+  align-items: center;
+  background-color: var(--agri-accent-light) !important;
+  color: var(--agri-primary) !important;
+  border: 1px solid var(--agri-accent) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  min-height: 38px;
+  transition: all 0.15s ease;
+}
+
+.obj_galley_link:hover,
+.obj_galley_link:focus {
+  background-color: var(--agri-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--agri-primary) !important;
+}
+
+/* Footer */
+.pkp_structure_footer_wrapper {
+  background-color: #24292e;
+  border-top: 3px solid var(--agri-accent);
+  color: #d1d5db;
+  padding: 36px 0;
+  margin-top: 48px;
+}
+
+.pkp_structure_footer_wrapper a {
+  color: var(--agri-accent) !important;
+}
+
+/* Accessibility Focus States */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--agri-accent) !important;
+  outline-offset: 2px !important;
+}

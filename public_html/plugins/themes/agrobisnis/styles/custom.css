@@ -2,21 +2,34 @@
  * Agribisnis Professional Academic Theme
  * Open Journal Systems 3.5 LTS
  * Palette: Forest Green (#1b4332, #2d6a4f), Harvest Gold (#c8963e, #d4a017)
+ * Layout: ITB Journals Directory Pattern adapted for Universitas Riau (UNRI)
  */
 
 :root {
   --agri-primary: #1b4332;
+  --agri-primary-dark: #143527;
   --agri-primary-light: #2d6a4f;
   --agri-accent: #c8963e;
   --agri-accent-light: #fdf6e7;
   --agri-accent-hover: #b8860b;
-  --agri-bg: #fcfbf7;
+  --agri-bg: #f8faf9;
   --agri-surface: #ffffff;
+  --agri-surface-subtle: #f1f5f2;
   --agri-text: #1f2937;
   --agri-text-muted: #4b5563;
-  --agri-border: #e5e7eb;
+  --agri-text-light: #6b7280;
+  --agri-border: #e2e8f0;
+  --agri-border-strong: #cbd5e1;
   --agri-font-serif: Georgia, "Merriweather", "Times New Roman", serif;
   --agri-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --agri-radius: 8px;
+  --agri-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --agri-shadow-md: 0 4px 12px rgba(27, 67, 50, 0.08);
+  --agri-shadow-lg: 0 10px 25px rgba(27, 67, 50, 0.12);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -24,13 +37,15 @@ body {
   color: var(--agri-text);
   font-family: var(--agri-font-sans);
   line-height: 1.65;
+  margin: 0;
+  padding: 0;
 }
 
 /* Header & Navigation Bar */
 .pkp_structure_head {
   background-color: var(--agri-primary) !important;
   border-bottom: 3px solid var(--agri-accent) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .pkp_site_name a {
@@ -63,110 +78,738 @@ body {
   outline-offset: 2px;
 }
 
-/* Main Structure */
+/* Main Structure Wrapper */
 .pkp_structure_content {
-  max-width: 1140px;
-  margin: 32px auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 24px auto 48px;
+  padding: 0 24px;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--agri-primary);
-  font-family: var(--agri-font-serif);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-/* Portal Homepage / Multi-Journal Cards */
-.page_index_site .journals {
-  margin-top: 24px;
-}
-
-.page_index_site .journals > h2 {
-  font-size: 1.75rem;
-  border-bottom: 2px solid var(--agri-border);
-  padding-bottom: 12px;
+/* ==========================================================================
+   ITB-Style Dual-Panel Hero Section (Adapted for UNRI Agribusiness)
+   ========================================================================== */
+.itb-hero-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8f5 100%);
+  border: 1px solid var(--agri-border);
+  border-radius: 12px;
+  padding: 44px 40px;
   margin-bottom: 28px;
-  position: relative;
+  box-shadow: var(--agri-shadow-sm);
 }
 
-.page_index_site .journals > h2::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background-color: var(--agri-accent);
-}
-
-.page_index_site .journals ul {
-  list-style: none;
-  padding: 0;
+.itb-hero-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.itb-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.itb-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--agri-primary);
+  background-color: var(--agri-accent-light);
+  border: 1px solid rgba(200, 150, 62, 0.35);
+  padding: 6px 14px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.itb-badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--agri-accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.itb-hero-title {
+  font-family: var(--agri-font-serif);
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--agri-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.itb-hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--agri-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.itb-hero-right {
+  display: flex;
+}
+
+.itb-hero-card {
+  background: #ffffff;
+  border: 1px solid var(--agri-border);
+  border-top: 4px solid var(--agri-accent);
+  border-radius: var(--agri-radius);
+  padding: 28px;
+  box-shadow: var(--agri-shadow-md);
+  width: 100%;
+}
+
+.itb-card-heading {
+  font-family: var(--agri-font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--agri-primary);
+  margin-bottom: 12px;
+}
+
+.itb-card-text {
+  font-size: 0.925rem;
+  color: var(--agri-text-muted);
+  line-height: 1.55;
+  margin: 0 0 20px;
+}
+
+.itb-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.itb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.885rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  min-height: 44px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.itb-btn-primary {
+  background-color: var(--agri-primary);
+  color: #ffffff !important;
+  border: 1px solid var(--agri-primary);
+}
+
+.itb-btn-primary:hover,
+.itb-btn-primary:focus {
+  background-color: var(--agri-primary-light);
+  border-color: var(--agri-primary-light);
+  color: #ffffff !important;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(27, 67, 50, 0.2);
+}
+
+.itb-btn-outline {
+  background-color: transparent;
+  color: var(--agri-primary) !important;
+  border: 1px solid var(--agri-primary);
+}
+
+.itb-btn-outline:hover,
+.itb-btn-outline:focus {
+  background-color: var(--agri-surface-subtle);
+  color: var(--agri-primary-dark) !important;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Stat & Quick Navigation Bar
+   ========================================================================== */
+.itb-stat-bar {
+  background: var(--agri-primary);
+  color: #ffffff;
+  border-radius: var(--agri-radius);
+  padding: 14px 24px;
+  margin-bottom: 36px;
+  box-shadow: var(--agri-shadow-sm);
+}
+
+.itb-stat-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.itb-stat-pill {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.itb-stat-pill strong {
+  color: var(--agri-accent-light);
+  font-size: 1rem;
+}
+
+.itb-stat-text {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+/* ==========================================================================
+   Section Headers
+   ========================================================================== */
+.itb-section-header {
+  margin-bottom: 24px;
+}
+
+.itb-section-title {
+  font-family: var(--agri-font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--agri-primary);
+  margin: 0 0 6px;
+  position: relative;
+  display: inline-block;
+}
+
+.itb-section-desc {
+  font-size: 0.95rem;
+  color: var(--agri-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Discipline / Subject Cluster Cards (4 Columns)
+   ========================================================================== */
+.itb-disciplines-section {
+  margin-bottom: 48px;
+}
+
+.itb-disciplines-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.itb-disc-card {
+  background: var(--agri-surface);
+  border: 1px solid var(--agri-border);
+  border-radius: var(--agri-radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.itb-disc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--agri-shadow-md);
+  border-color: var(--agri-accent);
+}
+
+.itb-disc-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--agri-accent-hover);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.itb-disc-title {
+  font-family: var(--agri-font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--agri-primary);
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.itb-disc-desc {
+  font-size: 0.865rem;
+  color: var(--agri-text-muted);
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.itb-disc-link {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--agri-primary) !important;
+  text-decoration: none;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.itb-disc-link:hover,
+.itb-disc-link:focus {
+  color: var(--agri-accent-hover) !important;
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   Directory Journal Cards (3 Columns)
+   ========================================================================== */
+.itb-directory-section {
+  margin-bottom: 48px;
+}
+
+.itb-journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.page_index_site .journals li {
+.itb-journal-card {
   background: var(--agri-surface);
   border: 1px solid var(--agri-border);
-  border-left: 4px solid var(--agri-primary);
-  border-radius: 6px;
-  padding: 24px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 10px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.itb-journal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--agri-shadow-lg);
+  border-color: var(--agri-accent);
+}
+
+.itb-journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--agri-border);
+}
+
+.itb-journal-acronym {
+  background: var(--agri-primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.825rem;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.itb-journal-cat {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--agri-primary-light);
+  background: var(--agri-surface-subtle);
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.itb-journal-thumb {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.itb-journal-thumb img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.itb-journal-body {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.page_index_site .journals li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(27, 67, 50, 0.08);
-  border-left-color: var(--agri-accent);
-}
-
-.page_index_site .journals li h3 {
+.itb-journal-title {
+  font-family: var(--agri-font-serif);
   font-size: 1.25rem;
-  margin-top: 0;
-  margin-bottom: 12px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.35;
 }
 
-.page_index_site .journals li h3 a {
+.itb-journal-title a {
   color: var(--agri-primary);
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-.page_index_site .journals li h3 a:hover {
-  color: var(--agri-primary-light);
+.itb-journal-title a:hover,
+.itb-journal-title a:focus {
+  color: var(--agri-accent-hover);
   text-decoration: underline;
 }
 
-.page_index_site .journals li .description {
+.itb-journal-desc {
+  font-size: 0.885rem;
   color: var(--agri-text-muted);
-  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0 0 20px;
   flex-grow: 1;
-  margin-bottom: 20px;
 }
 
-.page_index_site .journals li .links a {
-  display: inline-block;
+.itb-journal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--agri-border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.itb-action-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background-color: var(--agri-primary);
   color: #ffffff !important;
   font-weight: 600;
-  font-size: 0.875rem;
-  padding: 8px 18px;
-  border-radius: 4px;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 6px;
   text-decoration: none;
   min-height: 44px;
-  line-height: 28px;
+  transition: background-color 0.15s ease;
 }
 
-.page_index_site .journals li .links a:hover {
-  background-color: var(--agri-primary-light) !important;
+.itb-action-primary:hover,
+.itb-action-primary:focus {
+  background-color: var(--agri-primary-light);
+  color: #ffffff !important;
+  text-decoration: none;
 }
 
-/* Journal Issue & Article List */
+.itb-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.itb-action-secondary {
+  color: var(--agri-primary) !important;
+  font-weight: 600;
+  font-size: 0.825rem;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.itb-action-secondary:hover,
+.itb-action-secondary:focus {
+  color: var(--agri-accent-hover) !important;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Institutional CTA Banner
+   ========================================================================== */
+.itb-cta-banner {
+  background: linear-gradient(135deg, var(--agri-primary) 0%, var(--agri-primary-dark) 100%);
+  border-radius: 12px;
+  padding: 40px 36px;
+  color: #ffffff;
+  margin-bottom: 48px;
+  box-shadow: var(--agri-shadow-md);
+  border-left: 6px solid var(--agri-accent);
+}
+
+.itb-cta-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.itb-cta-heading {
+  font-family: var(--agri-font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.itb-cta-subheading {
+  font-size: 0.95rem;
+  color: #d1fae5;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.itb-btn-cta {
+  background-color: var(--agri-accent);
+  color: #ffffff !important;
+  border: 1px solid var(--agri-accent);
+  font-weight: 700;
+  padding: 12px 24px;
+  width: 100%;
+}
+
+.itb-btn-cta:hover,
+.itb-btn-cta:focus {
+  background-color: var(--agri-accent-hover);
+  border-color: var(--agri-accent-hover);
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(200, 150, 62, 0.4);
+}
+
+/* ==========================================================================
+   Institutional UNRI Footer (footer.tpl)
+   ========================================================================== */
+.itb-footer-wrapper {
+  background-color: #14221b;
+  border-top: 4px solid var(--agri-accent);
+  color: #d1d5db;
+  padding: 48px 0 24px;
+  margin-top: 48px;
+}
+
+.itb-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.itb-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.itb-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.itb-footer-monogram {
+  background-color: var(--agri-accent);
+  color: #14221b;
+  font-weight: 900;
+  font-size: 1.15rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.itb-footer-univ {
+  font-family: var(--agri-font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.itb-footer-dept {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.itb-footer-desc {
+  font-size: 0.885rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin: 0 0 14px;
+}
+
+.itb-footer-contact {
+  font-size: 0.885rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.itb-footer-contact a {
+  color: var(--agri-accent) !important;
+  text-decoration: none;
+}
+
+.itb-footer-contact a:hover {
+  text-decoration: underline;
+}
+
+.itb-footer-heading {
+  font-family: var(--agri-font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(200, 150, 62, 0.4);
+}
+
+.itb-indexing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itb-indexing-list li {
+  font-size: 0.85rem;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itb-index-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--agri-accent-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.itb-footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itb-footer-nav a {
+  color: #d1d5db !important;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.itb-footer-nav a:hover,
+.itb-footer-nav a:focus {
+  color: var(--agri-accent) !important;
+  text-decoration: underline;
+}
+
+.itb-license-note {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.5;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.itb-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.825rem;
+  color: #6b7280;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.itb-footer-platform a {
+  color: #9ca3af !important;
+  text-decoration: none;
+}
+
+.itb-footer-platform a:hover {
+  color: var(--agri-accent) !important;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 992px) {
+  .itb-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .itb-disciplines-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .itb-journal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .itb-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .itb-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .itb-hero-section {
+    padding: 24px 20px;
+  }
+
+  .itb-hero-title {
+    font-size: 1.85rem;
+  }
+
+  .itb-disciplines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itb-journal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .itb-journal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .itb-action-primary,
+  .itb-action-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .itb-stat-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .itb-cta-banner {
+    padding: 28px 20px;
+  }
+}
+
+/* ==========================================================================
+   Journal Issue & Article Details (Inner Pages)
+   ========================================================================== */
 .current_issue {
   background: var(--agri-surface);
   border: 1px solid var(--agri-border);
@@ -227,7 +870,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 14px;
   border-radius: 4px;
   text-decoration: none;
-  min-height: 38px;
+  min-height: 40px;
   transition: all 0.15s ease;
 }
 
@@ -236,19 +879,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--agri-primary) !important;
   color: #ffffff !important;
   border-color: var(--agri-primary) !important;
-}
-
-/* Footer */
-.pkp_structure_footer_wrapper {
-  background-color: #24292e;
-  border-top: 3px solid var(--agri-accent);
-  color: #d1d5db;
-  padding: 36px 0;
-  margin-top: 48px;
-}
-
-.pkp_structure_footer_wrapper a {
-  color: var(--agri-accent) !important;
 }
 
 /* Accessibility Focus States */

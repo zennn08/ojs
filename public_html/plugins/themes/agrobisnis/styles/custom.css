@@ -2,12 +2,12 @@
  * Agribisnis Professional Academic Theme
  * Open Journal Systems 3.5 LTS
  * Palette: Forest Green (#1b4332, #2d6a4f), Harvest Gold (#c8963e, #d4a017)
- * Layout: ITB Journals Directory Pattern adapted for Universitas Riau (UNRI)
+ * Layout: ITB Journals Expansive Directory Pattern adapted for Universitas Riau (UNRI)
  */
 
 :root {
   --agri-primary: #1b4332;
-  --agri-primary-dark: #143527;
+  --agri-primary-dark: #122d22;
   --agri-primary-light: #2d6a4f;
   --agri-accent: #c8963e;
   --agri-accent-light: #fdf6e7;
@@ -22,10 +22,10 @@
   --agri-border-strong: #cbd5e1;
   --agri-font-serif: Georgia, "Merriweather", "Times New Roman", serif;
   --agri-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --agri-radius: 8px;
+  --agri-radius: 10px;
   --agri-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --agri-shadow-md: 0 4px 12px rgba(27, 67, 50, 0.08);
-  --agri-shadow-lg: 0 10px 25px rgba(27, 67, 50, 0.12);
+  --agri-shadow-md: 0 6px 18px rgba(27, 67, 50, 0.07);
+  --agri-shadow-lg: 0 12px 32px rgba(27, 67, 50, 0.1);
 }
 
 * {
@@ -41,17 +41,46 @@ body {
   padding: 0;
 }
 
-/* Header & Navigation Bar */
+/* ==========================================================================
+   Expansive Layout & Container Widths (Matching ITB Journals Directory)
+   ========================================================================== */
+.pkp_structure_content,
+.itb-portal-container {
+  width: 92% !important;
+  max-width: 1560px !important;
+  margin: 32px auto 64px !important;
+  padding: 0 20px !important;
+}
+
+/* Header & Navigation Bar Stretch */
 .pkp_structure_head {
   background-color: var(--agri-primary) !important;
   border-bottom: 3px solid var(--agri-accent) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  width: 100% !important;
+}
+
+.pkp_structure_head .pkp_head_wrapper,
+.pkp_site_name_wrapper,
+.pkp_navigation_primary_wrapper,
+.pkp_navigation_user {
+  width: 92% !important;
+  max-width: 1560px !important;
+  margin: 0 auto !important;
+}
+
+.pkp_structure_head .pkp_head_wrapper {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
 }
 
 .pkp_site_name a {
   color: #ffffff !important;
   font-family: var(--agri-font-serif);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-decoration: none;
   letter-spacing: -0.01em;
@@ -62,8 +91,8 @@ body {
   color: #f3f4f6 !important;
   font-size: 0.925rem;
   font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -78,36 +107,29 @@ body {
   outline-offset: 2px;
 }
 
-/* Main Structure Wrapper */
-.pkp_structure_content {
-  max-width: 1200px;
-  margin: 24px auto 48px;
-  padding: 0 24px;
-}
-
 /* ==========================================================================
-   ITB-Style Dual-Panel Hero Section (Adapted for UNRI Agribusiness)
+   Expansive ITB-Style Dual-Panel Hero Section (Seamless, Open, Wide)
    ========================================================================== */
 .itb-hero-section {
-  background: linear-gradient(135deg, #ffffff 0%, #f4f8f5 100%);
-  border: 1px solid var(--agri-border);
-  border-radius: 12px;
-  padding: 44px 40px;
-  margin-bottom: 28px;
-  box-shadow: var(--agri-shadow-sm);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 36px 0 44px;
+  margin-bottom: 36px;
+  box-shadow: none;
 }
 
 .itb-hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
   align-items: center;
 }
 
 .itb-hero-left {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .itb-hero-badge {
@@ -120,8 +142,8 @@ body {
   text-transform: uppercase;
   color: var(--agri-primary);
   background-color: var(--agri-accent-light);
-  border: 1px solid rgba(200, 150, 62, 0.35);
-  padding: 6px 14px;
+  border: 1px solid rgba(200, 150, 62, 0.4);
+  padding: 6px 16px;
   border-radius: 20px;
   width: fit-content;
 }
@@ -136,19 +158,20 @@ body {
 
 .itb-hero-title {
   font-family: var(--agri-font-serif);
-  font-size: 2.35rem;
+  font-size: 3.1rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
   color: var(--agri-primary);
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .itb-hero-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   color: var(--agri-text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
+  max-width: 95%;
 }
 
 .itb-hero-right {
@@ -159,30 +182,31 @@ body {
   background: #ffffff;
   border: 1px solid var(--agri-border);
   border-top: 4px solid var(--agri-accent);
-  border-radius: var(--agri-radius);
-  padding: 28px;
-  box-shadow: var(--agri-shadow-md);
+  border-radius: 12px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 30px rgba(27, 67, 50, 0.07);
   width: 100%;
 }
 
 .itb-card-heading {
   font-family: var(--agri-font-serif);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: var(--agri-primary);
-  margin-bottom: 12px;
+  margin: 0 0 14px;
+  line-height: 1.45;
 }
 
 .itb-card-text {
-  font-size: 0.925rem;
+  font-size: 0.935rem;
   color: var(--agri-text-muted);
-  line-height: 1.55;
-  margin: 0 0 20px;
+  line-height: 1.6;
+  margin: 0 0 24px;
 }
 
 .itb-hero-actions {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -190,9 +214,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.885rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 11px 22px;
   border-radius: 6px;
   text-decoration: none;
   min-height: 44px;
@@ -212,7 +236,7 @@ body {
   border-color: var(--agri-primary-light);
   color: #ffffff !important;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(27, 67, 50, 0.2);
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.22);
 }
 
 .itb-btn-outline {
@@ -229,94 +253,151 @@ body {
 }
 
 /* ==========================================================================
-   Stat & Quick Navigation Bar
+   ITB-Style Split Stat Bar
    ========================================================================== */
 .itb-stat-bar {
-  background: var(--agri-primary);
-  color: #ffffff;
+  background: var(--agri-surface);
+  border: 1px solid var(--agri-border);
   border-radius: var(--agri-radius);
-  padding: 14px 24px;
-  margin-bottom: 36px;
+  overflow: hidden;
+  margin-bottom: 56px;
   box-shadow: var(--agri-shadow-sm);
 }
 
-.itb-stat-content {
+.itb-stat-split {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  align-items: stretch;
+}
+
+.itb-stat-count-box {
+  background: var(--agri-primary);
+  color: #ffffff;
+  padding: 24px 30px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 18px;
 }
 
-.itb-stat-pill {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
+.itb-stat-number {
+  font-family: var(--agri-font-serif);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.itb-stat-label {
+  font-size: 0.885rem;
+  line-height: 1.35;
+  color: #f3f4f6;
   font-weight: 500;
-  white-space: nowrap;
 }
 
-.itb-stat-pill strong {
-  color: var(--agri-accent-light);
-  font-size: 1rem;
+.itb-stat-info-box {
+  padding: 22px 34px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--agri-border);
 }
 
-.itb-stat-text {
-  font-size: 0.9rem;
-  color: #e5e7eb;
+.itb-stat-kicker {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--agri-accent-hover);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.itb-stat-desc {
+  font-size: 0.935rem;
+  color: var(--agri-text-muted);
+  margin: 0;
+  line-height: 1.55;
 }
 
 /* ==========================================================================
-   Section Headers
+   Section Headers (Split: Title Left, Guidance Right)
    ========================================================================== */
-.itb-section-header {
-  margin-bottom: 24px;
+.itb-section-header-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--agri-border);
+  gap: 32px;
+}
+
+.itb-section-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itb-section-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--agri-accent-hover);
+  text-transform: uppercase;
 }
 
 .itb-section-title {
   font-family: var(--agri-font-serif);
-  font-size: 1.65rem;
+  font-size: 1.85rem;
   font-weight: 700;
   color: var(--agri-primary);
-  margin: 0 0 6px;
-  position: relative;
-  display: inline-block;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.itb-section-header-right {
+  max-width: 540px;
+  text-align: right;
 }
 
 .itb-section-desc {
-  font-size: 0.95rem;
+  font-size: 0.935rem;
   color: var(--agri-text-muted);
+  line-height: 1.5;
   margin: 0;
 }
 
 /* ==========================================================================
-   Discipline / Subject Cluster Cards (4 Columns)
+   Discipline / Subject Cluster Cards (4 Columns Spanning Wide Layout)
    ========================================================================== */
 .itb-disciplines-section {
-  margin-bottom: 48px;
+  margin-bottom: 60px;
 }
 
 .itb-disciplines-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
 .itb-disc-card {
   background: var(--agri-surface);
   border: 1px solid var(--agri-border);
   border-radius: var(--agri-radius);
-  padding: 22px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .itb-disc-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--agri-shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08);
   border-color: var(--agri-accent);
+}
+
+.itb-disc-header {
+  margin-bottom: 12px;
 }
 
 .itb-disc-tag {
@@ -324,63 +405,72 @@ body {
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--agri-accent-hover);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   text-transform: uppercase;
 }
 
 .itb-disc-title {
   font-family: var(--agri-font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--agri-primary);
-  margin: 0 0 10px;
+  margin: 0;
   line-height: 1.35;
 }
 
 .itb-disc-desc {
-  font-size: 0.865rem;
+  font-size: 0.885rem;
   color: var(--agri-text-muted);
-  line-height: 1.5;
-  margin: 0 0 16px;
+  line-height: 1.55;
+  margin: 0 0 20px;
   flex-grow: 1;
 }
 
+.itb-disc-footer {
+  border-top: 1px solid var(--agri-border);
+  padding-top: 14px;
+}
+
 .itb-disc-link {
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--agri-primary) !important;
   text-decoration: none;
   min-height: 36px;
   display: inline-flex;
   align-items: center;
-  transition: color 0.15s ease, transform 0.15s ease;
+  justify-content: space-between;
+  width: 100%;
+  transition: color 0.15s ease;
 }
 
 .itb-disc-link:hover,
 .itb-disc-link:focus {
   color: var(--agri-accent-hover) !important;
-  text-decoration: underline;
-  transform: translateX(2px);
+}
+
+.itb-disc-arrow {
+  font-size: 1.1rem;
 }
 
 /* ==========================================================================
-   Directory Journal Cards (3 Columns)
+   Directory Journal Cards (3 Columns Spanning Wide Layout)
    ========================================================================== */
 .itb-directory-section {
-  margin-bottom: 48px;
+  margin-bottom: 60px;
 }
 
 .itb-journal-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
 .itb-journal-card {
   background: var(--agri-surface);
   border: 1px solid var(--agri-border);
-  border-radius: 10px;
-  padding: 26px;
+  border-radius: 12px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -397,8 +487,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--agri-border);
 }
 
@@ -406,24 +496,24 @@ body {
   background: var(--agri-primary);
   color: #ffffff;
   font-weight: 800;
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 4px;
 }
 
 .itb-journal-cat {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--agri-primary-light);
   background: var(--agri-surface-subtle);
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 5px 12px;
+  border-radius: 14px;
   white-space: nowrap;
 }
 
 .itb-journal-thumb {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-align: center;
 }
 
@@ -441,9 +531,9 @@ body {
 
 .itb-journal-title {
   font-family: var(--agri-font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   line-height: 1.35;
 }
 
@@ -460,10 +550,10 @@ body {
 }
 
 .itb-journal-desc {
-  font-size: 0.885rem;
+  font-size: 0.92rem;
   color: var(--agri-text-muted);
-  line-height: 1.55;
-  margin: 0 0 20px;
+  line-height: 1.6;
+  margin: 0 0 24px;
   flex-grow: 1;
 }
 
@@ -471,9 +561,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid var(--agri-border);
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -484,8 +574,8 @@ body {
   background-color: var(--agri-primary);
   color: #ffffff !important;
   font-weight: 600;
-  font-size: 0.85rem;
-  padding: 8px 16px;
+  font-size: 0.885rem;
+  padding: 9px 18px;
   border-radius: 6px;
   text-decoration: none;
   min-height: 44px;
@@ -507,7 +597,7 @@ body {
 .itb-action-secondary {
   color: var(--agri-primary) !important;
   font-weight: 600;
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   text-decoration: none;
   min-height: 44px;
   display: inline-flex;
@@ -522,28 +612,28 @@ body {
 }
 
 /* ==========================================================================
-   Institutional CTA Banner
+   Institutional CTA Banner (Full Width within Container)
    ========================================================================== */
 .itb-cta-banner {
   background: linear-gradient(135deg, var(--agri-primary) 0%, var(--agri-primary-dark) 100%);
   border-radius: 12px;
-  padding: 40px 36px;
+  padding: 44px 44px;
   color: #ffffff;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
   box-shadow: var(--agri-shadow-md);
   border-left: 6px solid var(--agri-accent);
 }
 
 .itb-cta-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 36px;
   align-items: center;
 }
 
 .itb-cta-heading {
   font-family: var(--agri-font-serif);
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 10px;
@@ -551,7 +641,7 @@ body {
 }
 
 .itb-cta-subheading {
-  font-size: 0.95rem;
+  font-size: 0.985rem;
   color: #d1fae5;
   margin: 0;
   line-height: 1.6;
@@ -562,7 +652,7 @@ body {
   color: #ffffff !important;
   border: 1px solid var(--agri-accent);
   font-weight: 700;
-  padding: 12px 24px;
+  padding: 13px 26px;
   width: 100%;
 }
 
@@ -571,74 +661,76 @@ body {
   background-color: var(--agri-accent-hover);
   border-color: var(--agri-accent-hover);
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(200, 150, 62, 0.4);
+  box-shadow: 0 4px 14px rgba(200, 150, 62, 0.4);
 }
 
 /* ==========================================================================
    Institutional UNRI Footer (footer.tpl)
    ========================================================================== */
 .itb-footer-wrapper {
-  background-color: #14221b;
+  background-color: #122019;
   border-top: 4px solid var(--agri-accent);
   color: #d1d5db;
-  padding: 48px 0 24px;
-  margin-top: 48px;
+  padding: 56px 0 28px;
+  margin-top: 60px;
+  width: 100%;
 }
 
 .itb-footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 92% !important;
+  max-width: 1560px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
 }
 
 .itb-footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 36px;
-  padding-bottom: 32px;
+  grid-template-columns: 1.6fr 1.1fr 1.1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+  padding-bottom: 36px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .itb-footer-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 .itb-footer-monogram {
   background-color: var(--agri-accent);
-  color: #14221b;
+  color: #122019;
   font-weight: 900;
-  font-size: 1.15rem;
-  padding: 8px 12px;
+  font-size: 1.25rem;
+  padding: 8px 14px;
   border-radius: 6px;
   letter-spacing: 0.05em;
 }
 
 .itb-footer-univ {
   font-family: var(--agri-font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
 }
 
 .itb-footer-dept {
-  font-size: 0.85rem;
+  font-size: 0.885rem;
   color: #9ca3af;
 }
 
 .itb-footer-desc {
-  font-size: 0.885rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: #9ca3af;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 .itb-footer-contact {
-  font-size: 0.885rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: #9ca3af;
   margin: 0;
@@ -655,10 +747,10 @@ body {
 
 .itb-footer-heading {
   font-family: var(--agri-font-serif);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(200, 150, 62, 0.4);
 }
@@ -669,22 +761,22 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .itb-indexing-list li {
-  font-size: 0.85rem;
+  font-size: 0.885rem;
   color: #d1d5db;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .itb-index-badge {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--agri-accent-light);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 4px;
@@ -693,15 +785,15 @@ body {
 .itb-footer-nav {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .itb-footer-nav a {
   color: #d1d5db !important;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.15s ease;
 }
@@ -713,22 +805,22 @@ body {
 }
 
 .itb-license-note {
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   color: #9ca3af;
   line-height: 1.5;
-  padding: 10px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.04);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .itb-footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   color: #6b7280;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
 }
 
 .itb-footer-platform a {
@@ -743,12 +835,7 @@ body {
 /* ==========================================================================
    Responsive Adaptations
    ========================================================================== */
-@media (max-width: 992px) {
-  .itb-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
+@media (max-width: 1200px) {
   .itb-disciplines-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -756,25 +843,48 @@ body {
   .itb-journal-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 992px) {
+  .itb-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .itb-stat-split {
+    grid-template-columns: 1fr;
+  }
+
+  .itb-stat-info-box {
+    border-left: none;
+    border-top: 1px solid var(--agri-border);
+  }
+
+  .itb-section-header-split {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .itb-section-header-right {
+    text-align: left;
+    max-width: 100%;
+  }
 
   .itb-cta-inner {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   .itb-footer-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
 }
 
 @media (max-width: 640px) {
-  .itb-hero-section {
-    padding: 24px 20px;
-  }
-
   .itb-hero-title {
-    font-size: 1.85rem;
+    font-size: 2.1rem;
   }
 
   .itb-disciplines-grid {
@@ -796,14 +906,8 @@ body {
     width: 100%;
   }
 
-  .itb-stat-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
   .itb-cta-banner {
-    padding: 28px 20px;
+    padding: 30px 24px;
   }
 }
 
@@ -814,19 +918,19 @@ body {
   background: var(--agri-surface);
   border: 1px solid var(--agri-border);
   border-radius: 8px;
-  padding: 28px;
-  margin-bottom: 32px;
+  padding: 32px;
+  margin-bottom: 36px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .current_issue h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--agri-primary);
   margin-top: 0;
 }
 
 .obj_article_summary {
-  padding: 20px 0;
+  padding: 22px 0;
   border-bottom: 1px solid var(--agri-border);
 }
 
@@ -836,7 +940,7 @@ body {
 
 .obj_article_summary .title {
   font-family: var(--agri-font-serif);
-  font-size: 1.18rem;
+  font-size: 1.22rem;
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 8px;
@@ -854,7 +958,7 @@ body {
 
 .obj_article_summary .authors {
   color: var(--agri-text-muted);
-  font-size: 0.925rem;
+  font-size: 0.95rem;
   font-style: italic;
   margin-bottom: 12px;
 }
@@ -865,9 +969,9 @@ body {
   background-color: var(--agri-accent-light) !important;
   color: var(--agri-primary) !important;
   border: 1px solid var(--agri-accent) !important;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 6px 16px;
   border-radius: 4px;
   text-decoration: none;
   min-height: 40px;

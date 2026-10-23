@@ -1,35 +1,48 @@
 /**
  * Agribisnis Professional Academic Theme
  * Open Journal Systems 3.5 LTS
- * Palette Specification:
- * - #3D5B2A : Forest Olive Green (Primary brand, deep contrast)
- * - #6B8E23 : Olive Drab (Primary light, secondary accents, hovers)
- * - #B5C547 : Chartreuse / Sprout Green (Borders, subtle tags, focus rings)
- * - #E6D64A : Harvest Gold / Warm Yellow (Accent highlights, top borders, CTAs)
- * - #F2EFE6 : Warm Alabaster Cream (Global canvas background, soft fills)
- * Layout: ITB Journals Pattern (Wide, Balanced, Clean Typography & Responsive Cards)
+ * Palette Specification (User Provided):
+ * - #ffffff : Pure White
+ * - #d0ded8 : Soft Mint / Light Sage
+ * - #85aa9b : Medium Sage / Muted Emerald
+ * - #588b76 : Forest Jade
+ * - #18392b : Deep Dark Pine
+ * Features: Light & Dark Mode with Topbar Toggle Button & Global Persistence
  */
 
-:root {
-  /* Exact User-Supplied Palette */
-  --agri-primary: #3D5B2A;
-  --agri-primary-dark: #273b1a;
-  --agri-primary-light: #6B8E23;
-  --agri-sprout: #B5C547;
-  --agri-accent: #E6D64A;
-  --agri-accent-hover: #d4c436;
-  --agri-bg: #F2EFE6;
+:root,
+[data-theme="light"] {
+  /* Exact User-Supplied Palette: Light Mode */
+  --agri-primary: #18392b;
+  --agri-primary-dark: #10261d;
+  --agri-primary-light: #588b76;
+  --agri-sprout: #85aa9b;
+  --agri-accent: #588b76;
+  --agri-accent-hover: #477260;
+  --agri-bg: #f6f9f8;
   --agri-surface: #ffffff;
-  --agri-surface-subtle: #faf8f2;
+  --agri-surface-subtle: #edf3f0;
 
   /* Typography & High-Contrast Neutrals */
-  --agri-text: #202b1b;
-  --agri-text-muted: #4e5a48;
-  --agri-text-light: #73806c;
+  --agri-text: #18392b;
+  --agri-text-muted: #3d584c;
+  --agri-text-light: #588b76;
 
   /* Borders & Dividers */
-  --agri-border: #e0dcd1;
-  --agri-border-strong: #c8c2b3;
+  --agri-border: #d0ded8;
+  --agri-border-strong: #85aa9b;
+
+  /* Navbar & Cards */
+  --agri-topbar-bg: #ffffff;
+  --agri-topbar-border: #85aa9b;
+  --agri-card-bg: #ffffff;
+  --agri-card-border: #d0ded8;
+  --agri-card-accent: #588b76;
+  --agri-cta-btn-bg: #588b76;
+  --agri-cta-btn-text: #ffffff;
+  --agri-footer-bg: #18392b;
+  --agri-footer-text: #d0ded8;
+  --agri-footer-muted: #85aa9b;
 
   /* Typography Stacks */
   --agri-font-serif: Georgia, "Merriweather", "Times New Roman", serif;
@@ -37,9 +50,48 @@
 
   /* Spacing & Effects */
   --agri-radius: 10px;
-  --agri-shadow-sm: 0 1px 3px rgba(61, 91, 42, 0.05);
-  --agri-shadow-md: 0 6px 20px rgba(61, 91, 42, 0.08);
-  --agri-shadow-lg: 0 12px 32px rgba(61, 91, 42, 0.12);
+  --agri-shadow-sm: 0 1px 3px rgba(24, 57, 43, 0.05);
+  --agri-shadow-md: 0 6px 20px rgba(24, 57, 43, 0.07);
+  --agri-shadow-lg: 0 12px 32px rgba(24, 57, 43, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Exact User-Supplied Palette: Dark Mode */
+  --agri-primary: #85aa9b;
+  --agri-primary-dark: #d0ded8;
+  --agri-primary-light: #d0ded8;
+  --agri-sprout: #588b76;
+  --agri-accent: #85aa9b;
+  --agri-accent-hover: #a3c5b7;
+  --agri-bg: #0d1e17;
+  --agri-surface: #18392b;
+  --agri-surface-subtle: #1f4534;
+
+  /* Typography & High-Contrast Neutrals */
+  --agri-text: #ffffff;
+  --agri-text-muted: #d0ded8;
+  --agri-text-light: #85aa9b;
+
+  /* Borders & Dividers */
+  --agri-border: #264e3c;
+  --agri-border-strong: #588b76;
+
+  /* Navbar & Cards */
+  --agri-topbar-bg: #132a20;
+  --agri-topbar-border: #588b76;
+  --agri-card-bg: #18392b;
+  --agri-card-border: #2c5341;
+  --agri-card-accent: #85aa9b;
+  --agri-cta-btn-bg: #85aa9b;
+  --agri-cta-btn-text: #0d1e17;
+  --agri-footer-bg: #091711;
+  --agri-footer-text: #d0ded8;
+  --agri-footer-muted: #85aa9b;
+
+  /* Shadows for Dark Mode */
+  --agri-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --agri-shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --agri-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -53,6 +105,7 @@ body {
   line-height: 1.65;
   margin: 0;
   padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ==========================================================================
@@ -96,32 +149,33 @@ body {
 
 /* Global Headings & Links */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--agri-primary);
+  color: var(--agri-text);
   font-family: var(--agri-font-serif);
   font-weight: 700;
   line-height: 1.3;
 }
 
 a {
-  color: var(--agri-primary);
+  color: var(--agri-primary-light);
   transition: color 0.15s ease;
 }
 
 a:hover, a:focus {
-  color: var(--agri-primary-light);
+  color: var(--agri-sprout);
 }
 
 /* ==========================================================================
-   MODERN TOPBAR & NAVBAR (Clean, Professional, Aligned Right)
+   MODERN TOPBAR & NAVBAR (With Dark / Light Mode Toggle)
    ========================================================================== */
 .itb-topbar {
-  background-color: var(--agri-surface);
-  border-bottom: 2px solid var(--agri-sprout);
-  box-shadow: 0 1px 4px rgba(61, 91, 42, 0.06);
+  background-color: var(--agri-topbar-bg);
+  border-bottom: 2px solid var(--agri-topbar-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .itb-topbar-container {
@@ -153,7 +207,7 @@ a:hover, a:focus {
 }
 
 .itb-brand-monogram {
-  background-color: var(--agri-primary);
+  background-color: var(--agri-primary-light);
   color: #ffffff;
   font-weight: 800;
   font-size: 1.15rem;
@@ -162,6 +216,11 @@ a:hover, a:focus {
   border-radius: 6px;
   display: inline-block;
   line-height: 1;
+}
+
+[data-theme="dark"] .itb-brand-monogram {
+  background-color: var(--agri-sprout);
+  color: #0d1e17;
 }
 
 .itb-brand-info {
@@ -173,13 +232,13 @@ a:hover, a:focus {
   font-family: var(--agri-font-serif);
   font-size: 1.22rem;
   font-weight: 700;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   line-height: 1.25;
 }
 
 .itb-brand-unit {
   font-size: 0.76rem;
-  color: var(--agri-text-light);
+  color: var(--agri-text-muted);
   letter-spacing: 0.02em;
 }
 
@@ -187,7 +246,7 @@ a:hover, a:focus {
 .itb-topbar-nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .itb-menu-list {
@@ -212,7 +271,7 @@ a:hover, a:focus {
 
 .itb-menu-link:hover,
 .itb-menu-link:focus {
-  color: var(--agri-primary);
+  color: var(--agri-primary-light);
   background-color: var(--agri-surface-subtle);
   text-decoration: none;
 }
@@ -222,11 +281,51 @@ a:hover, a:focus {
   align-items: center;
   gap: 12px;
   border-left: 1px solid var(--agri-border);
-  padding-left: 20px;
+  padding-left: 18px;
+}
+
+/* Theme Toggle Button */
+.itb-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--agri-surface-subtle);
+  border: 1px solid var(--agri-border);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.15rem;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.itb-theme-toggle:hover {
+  background-color: var(--agri-border);
+  border-color: var(--agri-primary-light);
+  transform: scale(1.05);
+}
+
+/* Light / Dark Icon Visibility */
+:root .itb-icon-sun,
+[data-theme="light"] .itb-icon-sun {
+  display: none;
+}
+:root .itb-icon-moon,
+[data-theme="light"] .itb-icon-moon {
+  display: inline-block;
+}
+
+[data-theme="dark"] .itb-icon-moon {
+  display: none;
+}
+[data-theme="dark"] .itb-icon-sun {
+  display: inline-block;
 }
 
 .itb-auth-login {
-  color: var(--agri-primary);
+  color: var(--agri-text);
   font-size: 0.9rem;
   font-weight: 600;
   padding: 8px 14px;
@@ -241,7 +340,7 @@ a:hover, a:focus {
 }
 
 .itb-btn-register {
-  background-color: var(--agri-primary);
+  background-color: var(--agri-primary-light);
   color: #ffffff !important;
   font-size: 0.885rem;
   font-weight: 600;
@@ -250,20 +349,32 @@ a:hover, a:focus {
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.15s ease;
-  border: 1px solid var(--agri-primary);
+  border: 1px solid var(--agri-primary-light);
 }
 
 .itb-btn-register:hover,
 .itb-btn-register:focus {
-  background-color: var(--agri-primary-light);
-  border-color: var(--agri-primary-light);
+  background-color: var(--agri-primary);
+  border-color: var(--agri-primary);
   color: #ffffff !important;
-  box-shadow: 0 3px 8px rgba(61, 91, 42, 0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
 
+[data-theme="dark"] .itb-btn-register {
+  background-color: var(--agri-sprout);
+  color: #0d1e17 !important;
+  border-color: var(--agri-sprout);
+}
+
+[data-theme="dark"] .itb-btn-register:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #0d1e17 !important;
+}
+
 .itb-auth-user {
-  color: var(--agri-primary);
+  color: var(--agri-text);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
@@ -273,7 +384,7 @@ a:hover, a:focus {
 }
 
 .itb-auth-logout {
-  color: #dc2626;
+  color: #e57373;
   font-size: 0.85rem;
   text-decoration: none;
 }
@@ -283,7 +394,7 @@ a:hover, a:focus {
 }
 
 /* ==========================================================================
-   DUAL-PANEL HERO SECTION (Open, Airy, Academic)
+   DUAL-PANEL HERO SECTION
    ========================================================================== */
 .itb-hero-section {
   background: transparent;
@@ -312,9 +423,9 @@ a:hover, a:focus {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--agri-primary);
+  color: var(--agri-primary-light);
   background-color: var(--agri-surface);
-  border: 1px solid var(--agri-sprout);
+  border: 1px solid var(--agri-border);
   padding: 6px 14px;
   border-radius: 20px;
   width: fit-content;
@@ -324,7 +435,7 @@ a:hover, a:focus {
 .itb-badge-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--agri-accent);
+  background-color: var(--agri-primary-light);
   border-radius: 50%;
   display: inline-block;
 }
@@ -334,7 +445,7 @@ a:hover, a:focus {
   font-size: 3.25rem;
   font-weight: 800;
   line-height: 1.1;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   margin: 0;
   letter-spacing: -0.025em;
 }
@@ -352,20 +463,21 @@ a:hover, a:focus {
 }
 
 .itb-hero-card {
-  background: var(--agri-surface);
-  border: 1px solid var(--agri-border);
-  border-top: 4px solid var(--agri-accent);
+  background: var(--agri-card-bg);
+  border: 1px solid var(--agri-card-border);
+  border-top: 4px solid var(--agri-card-accent);
   border-radius: 12px;
   padding: 36px 32px;
   box-shadow: var(--agri-shadow-md);
   width: 100%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .itb-card-heading {
   font-family: var(--agri-font-serif);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   margin: 0 0 14px;
   line-height: 1.45;
 }
@@ -398,34 +510,45 @@ a:hover, a:focus {
 }
 
 .itb-btn-primary {
-  background-color: var(--agri-primary);
+  background-color: var(--agri-primary-light);
   color: #ffffff !important;
-  border: 1px solid var(--agri-primary);
+  border: 1px solid var(--agri-primary-light);
 }
 
 .itb-btn-primary:hover,
 .itb-btn-primary:focus {
-  background-color: var(--agri-primary-light);
-  border-color: var(--agri-primary-light);
+  background-color: var(--agri-primary);
+  border-color: var(--agri-primary);
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(61, 91, 42, 0.22);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .itb-btn-primary {
+  background-color: var(--agri-sprout);
+  color: #0d1e17 !important;
+  border-color: var(--agri-sprout);
+}
+
+[data-theme="dark"] .itb-btn-primary:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 
 .itb-btn-outline {
   background-color: transparent;
-  color: var(--agri-primary) !important;
-  border: 1px solid var(--agri-primary);
+  color: var(--agri-text) !important;
+  border: 1px solid var(--agri-border-strong);
 }
 
 .itb-btn-outline:hover,
 .itb-btn-outline:focus {
   background-color: var(--agri-surface-subtle);
-  color: var(--agri-primary-dark) !important;
+  color: var(--agri-text) !important;
   text-decoration: none;
 }
 
 /* ==========================================================================
-   SPLIT STAT BAR (Forest Olive Box + White Info Box)
+   SPLIT STAT BAR
    ========================================================================== */
 .itb-stat-bar {
   background: var(--agri-surface);
@@ -434,6 +557,7 @@ a:hover, a:focus {
   overflow: hidden;
   margin-bottom: 56px;
   box-shadow: var(--agri-shadow-sm);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .itb-stat-split {
@@ -451,6 +575,11 @@ a:hover, a:focus {
   gap: 18px;
 }
 
+[data-theme="dark"] .itb-stat-count-box {
+  background: var(--agri-surface-subtle);
+  border-right: 1px solid var(--agri-border);
+}
+
 .itb-stat-number {
   font-family: var(--agri-font-serif);
   font-size: 3.4rem;
@@ -459,10 +588,14 @@ a:hover, a:focus {
   line-height: 1;
 }
 
+[data-theme="dark"] .itb-stat-number {
+  color: var(--agri-sprout);
+}
+
 .itb-stat-label {
   font-size: 0.885rem;
   line-height: 1.35;
-  color: #f0f4ec;
+  color: var(--agri-footer-text);
   font-weight: 500;
 }
 
@@ -522,7 +655,7 @@ a:hover, a:focus {
   font-family: var(--agri-font-serif);
   font-size: 1.85rem;
   font-weight: 700;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   margin: 0;
   letter-spacing: -0.015em;
 }
@@ -553,8 +686,8 @@ a:hover, a:focus {
 }
 
 .itb-disc-card {
-  background: var(--agri-surface);
-  border: 1px solid var(--agri-border);
+  background: var(--agri-card-bg);
+  border: 1px solid var(--agri-card-border);
   border-radius: var(--agri-radius);
   padding: 26px 28px;
   display: flex;
@@ -565,7 +698,7 @@ a:hover, a:focus {
 .itb-disc-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--agri-shadow-md);
-  border-color: var(--agri-sprout);
+  border-color: var(--agri-primary-light);
 }
 
 .itb-disc-header {
@@ -585,7 +718,7 @@ a:hover, a:focus {
   font-family: var(--agri-font-serif);
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   margin: 0;
   line-height: 1.35;
 }
@@ -606,7 +739,7 @@ a:hover, a:focus {
 .itb-disc-link {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--agri-primary) !important;
+  color: var(--agri-text) !important;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -642,8 +775,8 @@ a:hover, a:focus {
 }
 
 .itb-journal-card {
-  background: var(--agri-surface);
-  border: 1px solid var(--agri-border);
+  background: var(--agri-card-bg);
+  border: 1px solid var(--agri-card-border);
   border-radius: 12px;
   padding: 30px;
   display: flex;
@@ -654,7 +787,7 @@ a:hover, a:focus {
 .itb-journal-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--agri-shadow-lg);
-  border-color: var(--agri-accent);
+  border-color: var(--agri-primary-light);
 }
 
 .itb-journal-header {
@@ -667,7 +800,7 @@ a:hover, a:focus {
 }
 
 .itb-journal-acronym {
-  background: var(--agri-primary);
+  background: var(--agri-primary-light);
   color: #ffffff;
   font-weight: 800;
   font-size: 0.85rem;
@@ -676,10 +809,15 @@ a:hover, a:focus {
   border-radius: 4px;
 }
 
+[data-theme="dark"] .itb-journal-acronym {
+  background: var(--agri-sprout);
+  color: #0d1e17;
+}
+
 .itb-journal-cat {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--agri-primary);
+  color: var(--agri-text-muted);
   background: var(--agri-surface-subtle);
   border: 1px solid var(--agri-border);
   padding: 4px 12px;
@@ -702,7 +840,7 @@ a:hover, a:focus {
 }
 
 .itb-journal-title a {
-  color: var(--agri-primary);
+  color: var(--agri-text);
   text-decoration: none;
   transition: color 0.15s ease;
 }
@@ -732,7 +870,7 @@ a:hover, a:focus {
 }
 
 .itb-action-link {
-  color: var(--agri-primary) !important;
+  color: var(--agri-primary-light) !important;
   font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
@@ -744,7 +882,7 @@ a:hover, a:focus {
 
 .itb-action-link:hover,
 .itb-action-link:focus {
-  color: var(--agri-primary-light) !important;
+  color: var(--agri-text);
   text-decoration: underline;
 }
 
@@ -763,7 +901,7 @@ a:hover, a:focus {
 
 .itb-action-sublink:hover,
 .itb-action-sublink:focus {
-  color: var(--agri-primary) !important;
+  color: var(--agri-text);
   text-decoration: underline;
 }
 
@@ -771,13 +909,19 @@ a:hover, a:focus {
    INSTITUTIONAL CTA BANNER
    ========================================================================== */
 .itb-cta-banner {
-  background: linear-gradient(135deg, var(--agri-primary) 0%, var(--agri-primary-dark) 100%);
+  background: linear-gradient(135deg, #18392b 0%, #10261d 100%);
   border-radius: 12px;
   padding: 44px 48px;
   color: #ffffff;
   margin-bottom: 60px;
   box-shadow: var(--agri-shadow-md);
-  border-left: 6px solid var(--agri-accent);
+  border-left: 6px solid var(--agri-primary-light);
+}
+
+[data-theme="dark"] .itb-cta-banner {
+  background: linear-gradient(135deg, #18392b 0%, #0d1e17 100%);
+  border: 1px solid var(--agri-border);
+  border-left: 6px solid var(--agri-sprout);
 }
 
 .itb-cta-inner {
@@ -791,7 +935,7 @@ a:hover, a:focus {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--agri-accent);
+  color: var(--agri-sprout);
   margin-bottom: 8px;
   text-transform: uppercase;
 }
@@ -807,15 +951,15 @@ a:hover, a:focus {
 
 .itb-cta-subheading {
   font-size: 0.985rem;
-  color: #e4eedb;
+  color: #d0ded8;
   margin: 0;
   line-height: 1.6;
 }
 
 .itb-btn-cta {
-  background-color: var(--agri-accent);
-  color: var(--agri-primary-dark) !important;
-  border: 1px solid var(--agri-accent);
+  background-color: var(--agri-cta-btn-bg);
+  color: var(--agri-cta-btn-text) !important;
+  border: 1px solid var(--agri-cta-btn-bg);
   font-weight: 700;
   padding: 13px 26px;
   width: 100%;
@@ -825,20 +969,21 @@ a:hover, a:focus {
 .itb-btn-cta:focus {
   background-color: var(--agri-accent-hover);
   border-color: var(--agri-accent-hover);
-  color: var(--agri-primary-dark) !important;
-  box-shadow: 0 4px 14px rgba(230, 214, 74, 0.45);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================================================
    INSTITUTIONAL FOOTER (footer.tpl)
    ========================================================================== */
 .itb-footer-wrapper {
-  background-color: var(--agri-primary-dark);
-  border-top: 4px solid var(--agri-accent);
-  color: #e2e8dd;
+  background-color: var(--agri-footer-bg);
+  border-top: 4px solid var(--agri-primary-light);
+  color: var(--agri-footer-text);
   padding: 56px 0 28px;
   margin-top: 60px;
   width: 100%;
+  transition: background-color 0.2s ease;
 }
 
 .itb-footer-container {
@@ -865,13 +1010,18 @@ a:hover, a:focus {
 }
 
 .itb-footer-monogram {
-  background-color: var(--agri-accent);
-  color: var(--agri-primary-dark);
+  background-color: var(--agri-primary-light);
+  color: #ffffff;
   font-weight: 900;
   font-size: 1.25rem;
   padding: 8px 14px;
   border-radius: 6px;
   letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .itb-footer-monogram {
+  background-color: var(--agri-sprout);
+  color: #0d1e17;
 }
 
 .itb-footer-univ {
@@ -884,29 +1034,25 @@ a:hover, a:focus {
 
 .itb-footer-dept {
   font-size: 0.885rem;
-  color: #b7c7b0;
+  color: var(--agri-footer-muted);
 }
 
 .itb-footer-desc {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #c5d4be;
+  color: var(--agri-footer-text);
   margin: 0 0 16px;
 }
 
 .itb-footer-contact {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #c5d4be;
+  color: var(--agri-footer-text);
   margin: 0;
 }
 
 .itb-footer-contact a {
-  color: var(--agri-accent) !important;
-  text-decoration: none;
-}
-
-.itb-footer-contact a:hover {
+  color: #ffffff !important;
   text-decoration: underline;
 }
 
@@ -917,7 +1063,7 @@ a:hover, a:focus {
   color: #ffffff;
   margin: 0 0 18px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(230, 214, 74, 0.4);
+  border-bottom: 1px solid var(--agri-primary-light);
 }
 
 .itb-indexing-list {
@@ -931,7 +1077,7 @@ a:hover, a:focus {
 
 .itb-indexing-list li {
   font-size: 0.885rem;
-  color: #e2e8dd;
+  color: var(--agri-footer-text);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -939,8 +1085,8 @@ a:hover, a:focus {
 
 .itb-index-badge {
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(230, 214, 74, 0.35);
-  color: var(--agri-accent);
+  border: 1px solid var(--agri-sprout);
+  color: #ffffff;
   font-size: 0.74rem;
   font-weight: 700;
   padding: 2px 8px;
@@ -957,7 +1103,7 @@ a:hover, a:focus {
 }
 
 .itb-footer-nav a {
-  color: #e2e8dd !important;
+  color: var(--agri-footer-text) !important;
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.15s ease;
@@ -965,13 +1111,13 @@ a:hover, a:focus {
 
 .itb-footer-nav a:hover,
 .itb-footer-nav a:focus {
-  color: var(--agri-accent) !important;
+  color: #ffffff !important;
   text-decoration: underline;
 }
 
 .itb-license-note {
   font-size: 0.825rem;
-  color: #b7c7b0;
+  color: var(--agri-footer-muted);
   line-height: 1.5;
   padding: 12px;
   background: rgba(255, 255, 255, 0.05);
@@ -983,27 +1129,27 @@ a:hover, a:focus {
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: #9cb093;
+  color: var(--agri-footer-muted);
   flex-wrap: wrap;
   gap: 14px;
 }
 
 .itb-footer-platform a {
-  color: #c5d4be !important;
+  color: var(--agri-footer-text) !important;
   text-decoration: none;
 }
 
 .itb-footer-platform a:hover {
-  color: var(--agri-accent) !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
-   GLOBAL INNER PAGES STYLING (Consistency Across All OJS Pages)
+   GLOBAL INNER PAGES STYLING
    ========================================================================== */
 .current_issue {
-  background: var(--agri-surface);
-  border: 1px solid var(--agri-border);
-  border-top: 4px solid var(--agri-accent);
+  background: var(--agri-card-bg);
+  border: 1px solid var(--agri-card-border);
+  border-top: 4px solid var(--agri-card-accent);
   border-radius: var(--agri-radius);
   padding: 32px;
   margin-bottom: 36px;
@@ -1012,7 +1158,7 @@ a:hover, a:focus {
 
 .current_issue h2 {
   font-size: 1.6rem;
-  color: var(--agri-primary);
+  color: var(--agri-text);
   margin-top: 0;
 }
 
@@ -1034,7 +1180,7 @@ a:hover, a:focus {
 }
 
 .obj_article_summary .title a {
-  color: var(--agri-primary);
+  color: var(--agri-text);
   text-decoration: none;
 }
 
@@ -1054,8 +1200,8 @@ a:hover, a:focus {
   display: inline-flex !important;
   align-items: center;
   background-color: var(--agri-surface-subtle) !important;
-  color: var(--agri-primary) !important;
-  border: 1px solid var(--agri-sprout) !important;
+  color: var(--agri-text) !important;
+  border: 1px solid var(--agri-border) !important;
   font-size: 0.88rem;
   font-weight: 600;
   padding: 6px 16px;
@@ -1067,17 +1213,17 @@ a:hover, a:focus {
 
 .obj_galley_link:hover,
 .obj_galley_link:focus {
-  background-color: var(--agri-primary) !important;
+  background-color: var(--agri-primary-light) !important;
   color: #ffffff !important;
-  border-color: var(--agri-primary) !important;
+  border-color: var(--agri-primary-light) !important;
 }
 
 .cmp_button,
 button.cmp_button,
 .block_make_submission a {
-  background-color: var(--agri-primary) !important;
+  background-color: var(--agri-primary-light) !important;
   color: #ffffff !important;
-  border: 1px solid var(--agri-primary) !important;
+  border: 1px solid var(--agri-primary-light) !important;
   border-radius: 6px !important;
   padding: 8px 18px !important;
   font-weight: 600 !important;
@@ -1088,17 +1234,17 @@ button.cmp_button,
 .cmp_button:hover,
 button.cmp_button:hover,
 .block_make_submission a:hover {
-  background-color: var(--agri-primary-light) !important;
-  border-color: var(--agri-primary-light) !important;
+  background-color: var(--agri-primary) !important;
+  border-color: var(--agri-primary) !important;
 }
 
 .cmp_breadcrumbs a {
-  color: var(--agri-primary) !important;
+  color: var(--agri-primary-light) !important;
   text-decoration: none;
 }
 
 .cmp_breadcrumbs a:hover {
-  color: var(--agri-primary-light) !important;
+  color: var(--agri-text);
   text-decoration: underline;
 }
 
@@ -1198,6 +1344,6 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--agri-accent) !important;
+  outline: 2px solid var(--agri-primary-light) !important;
   outline-offset: 2px !important;
 }

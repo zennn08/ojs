@@ -41,7 +41,9 @@ $requiredMarkers = [
     'Sosio-Ekonomi & Bisnis Pertanian' => 'Subject discipline card "Sosio-Ekonomi & Bisnis Pertanian"',
     'Agroteknologi'              => 'Discipline / card marker "Agroteknologi"',
     'GARUDA'                     => 'Footer indexing badge "GARUDA"',
-    'SINTA'                      => 'Footer indexing badge "SINTA"'
+    'SINTA'                      => 'Footer indexing badge "SINTA"',
+    'id="themeToggle"'           => 'Navbar Dark/Light mode toggle button "themeToggle"',
+    'data-theme'                 => 'Theme switching attribute "data-theme"'
 ];
 
 $failedCount = 0;

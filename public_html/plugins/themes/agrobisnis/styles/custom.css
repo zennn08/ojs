@@ -48,6 +48,19 @@ body {
   display: none !important; /* Hide old default stacked header in favor of modern itb-topbar */
 }
 
+/* Remove unwanted default OJS vertical border lines on left and right */
+.pkp_structure_main::before,
+.pkp_structure_main::after,
+.pkp_structure_content::before,
+.pkp_structure_content::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
 .pkp_structure_content,
 .pkp_structure_main,
 .page_index_site,

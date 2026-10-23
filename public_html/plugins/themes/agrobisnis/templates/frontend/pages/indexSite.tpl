@@ -14,13 +14,13 @@
 			<div class="itb-hero-left">
 				<div class="itb-hero-badge">
 					<span class="itb-badge-dot"></span>
-					UNIVERSITAS RIAU &bull; FAKULTAS PERTANIAN
+					PUBLIKASI ILMIAH UNIVERSITAS RIAU
 				</div>
 				<h1 class="itb-hero-title">
 					UNRI Agribusiness Journals
 				</h1>
 				<p class="itb-hero-subtitle">
-					Portal Direktori Jurnal Ilmiah Program Studi Agribisnis, Jurusan Sosial Ekonomi Pertanian Universitas Riau. Pusat diseminasi hasil riset agribisnis, sosial ekonomi pertanian, dan rantai pasok komoditas tropika.
+					Jelajahi jurnal ilmiah yang diterbitkan dan dikelola oleh Program Studi Agribisnis, Jurusan Sosial Ekonomi Pertanian, Fakultas Pertanian, Universitas Riau.
 				</p>
 			</div>
 
@@ -30,7 +30,7 @@
 						Direktori UNRI Agribusiness Journals menghadirkan publikasi berkala dari rumpun agribisnis dan pertanian tropika berkelanjutan.
 					</h3>
 					<p class="itb-card-text">
-						Publikasi mencakup bidang sosial ekonomi pertanian, manajemen usahatani, tata niaga komoditas perkebunan, agroteknologi, pengolahan hasil panen, rantai pasok, dan kelembagaan petani di Indonesia.
+						Publikasi mencakup bidang sosial ekonomi pertanian, manajemen usahatani, tata niaga komoditas perkebunan, agroteknologi, hilirisasi produk pangan, logistik rantai pasok, dan kelembagaan petani di Indonesia.
 					</p>
 					<div class="itb-hero-actions">
 						<a href="#directory" class="itb-btn itb-btn-primary">
@@ -83,7 +83,7 @@
 					Manajemen usahatani, ekonomi sumberdaya, analisis pembiayaan agribisnis, tata niaga komoditas, dan kebijakan agraria tropis.
 				</p>
 				<div class="itb-disc-footer">
-					<a href="#journal-jsep" class="itb-disc-link">Jurnal: JSEP <span class="itb-disc-arrow">&darr;</span></a>
+					<a href="#cluster-jsep" class="itb-disc-link">Jurnal: JSEP <span class="itb-disc-arrow">&darr;</span></a>
 				</div>
 			</div>
 
@@ -96,7 +96,7 @@
 					Inovasi pascapanen, hilirisasi produk perkebunan (sawit, karet, sagu, kelapa), bioteknologi terapan, dan mutu pangan.
 				</p>
 				<div class="itb-disc-footer">
-					<a href="#journal-japt" class="itb-disc-link">Jurnal: JAPT <span class="itb-disc-arrow">&darr;</span></a>
+					<a href="#cluster-japt" class="itb-disc-link">Jurnal: JAPT <span class="itb-disc-arrow">&darr;</span></a>
 				</div>
 			</div>
 
@@ -128,85 +128,126 @@
 		</div>
 	</section>
 
-	{* Journal Directory Section (3 columns grid) *}
-	<section id="directory" class="itb-directory-section">
-		<div class="itb-section-header-split">
-			<div class="itb-section-header-left">
-				<span class="itb-section-kicker">DAFTAR JURNAL BERKALA ILMIAH</span>
-				<h2 class="itb-section-title">Direktori Jurnal Ilmiah Agribisnis</h2>
-			</div>
-			<div class="itb-section-header-right">
-				<p class="itb-section-desc">Jurnal berkala ilmiah yang diterbitkan dan dikelola secara profesional sesuai kaidah integritas saintifik nasional.</p>
-			</div>
-		</div>
+	{* Journal Directory Section Organized by Category (Like ITB Journals) *}
+	<div id="directory" class="itb-directory-wrapper">
 
-		{if !$journals|@count}
-			<div class="itb-empty-alert">
-				{translate key="site.noJournals"}
+		{* Category 1: Sosio-Ekonomi & Bisnis Pertanian *}
+		<section id="cluster-jsep" class="itb-category-section">
+			<div class="itb-section-header-split">
+				<div class="itb-section-header-left">
+					<span class="itb-section-kicker">SOSIO-EKONOMI &amp; BISNIS PERTANIAN</span>
+					<h2 class="itb-section-title">Sosio-Ekonomi &amp; Bisnis Pertanian</h2>
+				</div>
+				<div class="itb-section-header-right">
+					<p class="itb-section-desc">
+						Jurnal di bidang sosial ekonomi pertanian, analisis usahatani, tata niaga komoditas perkebunan tropis, dan kebijakan agraria.
+					</p>
+				</div>
 			</div>
-		{else}
+
 			<div class="itb-journal-grid">
 				{foreach from=$journals item=journal}
-					{capture assign="url"}{url journal=$journal->getPath()}{/capture}
-					{assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
-					{assign var="description" value=$journal->getLocalizedDescription()}
-					{assign var="path" value=$journal->getPath()}
+					{if $journal->getPath() == 'jsep'}
+						{capture assign="url"}{url journal=$journal->getPath()}{/capture}
+						{assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
+						{assign var="description" value=$journal->getLocalizedDescription()}
+						{assign var="path" value=$journal->getPath()}
 
-					<div class="itb-journal-card" id="journal-{$path}">
-						<div class="itb-journal-header">
-							<span class="itb-journal-acronym">
-								{$path|upper}
-							</span>
-							<span class="itb-journal-cat">
-								{if $path == 'jsep'}
-									Sosial Ekonomi & Bisnis
-								{elseif $path == 'japt'}
-									Agroteknologi & Pengolahan
-								{else}
-									Jurnal Agribisnis
+						<div class="itb-journal-card" id="journal-{$path}">
+							<div class="itb-journal-header">
+								<span class="itb-journal-acronym">{$path|upper}</span>
+								<span class="itb-journal-cat">Sosial Ekonomi Pertanian</span>
+							</div>
+
+							<div class="itb-journal-body">
+								<h3 class="itb-journal-title">
+									<a href="{$url}" rel="bookmark">
+										{$journal->getLocalizedName()|escape}
+									</a>
+								</h3>
+								{if $description}
+									<p class="itb-journal-desc">
+										{$description|strip_tags|truncate:220:"..."}
+									</p>
 								{/if}
-							</span>
-						</div>
+							</div>
 
-						{if $thumb}
-							<div class="itb-journal-thumb">
-								<a href="{$url}">
-									<img src="{$journalFilesPath}{$journal->getId()}/{$thumb.uploadName|escape:"url"}"{if $thumb.altText} alt="{$thumb.altText|escape|default:''}"{/if}>
+							<div class="itb-journal-footer">
+								<a href="{$url}" class="itb-action-link">
+									Kunjungi Jurnal <span class="itb-arrow">&nearr;</span>
+								</a>
+								<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="itb-action-sublink">
+									Terbitan Terbaru &rarr;
 								</a>
 							</div>
-						{/if}
-
-						<div class="itb-journal-body">
-							<h3 class="itb-journal-title">
-								<a href="{$url}" rel="bookmark">
-									{$journal->getLocalizedName()|escape}
-								</a>
-							</h3>
-							{if $description}
-								<p class="itb-journal-desc">
-									{$description|strip_tags|truncate:240:"..."}
-								</p>
-							{/if}
 						</div>
-
-						<div class="itb-journal-footer">
-							<a href="{$url}" class="itb-action-primary">
-								Kunjungi Jurnal <span class="itb-arrow">&nearr;</span>
-							</a>
-							<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="itb-action-secondary">
-								Terbitan Terbaru &rarr;
-							</a>
-						</div>
-					</div>
+					{/if}
 				{/foreach}
 			</div>
-		{/if}
-	</section>
+		</section>
+
+		{* Category 2: Agroteknologi & Pengolahan *}
+		<section id="cluster-japt" class="itb-category-section">
+			<div class="itb-section-header-split">
+				<div class="itb-section-header-left">
+					<span class="itb-section-kicker">AGROTEKNOLOGI &amp; PENGOLAHAN HASIL</span>
+					<h2 class="itb-section-title">Agroteknologi &amp; Pengolahan</h2>
+				</div>
+				<div class="itb-section-header-right">
+					<p class="itb-section-desc">
+						Jurnal di bidang inovasi budidaya tropika, pascapanen, teknologi pengolahan hasil perkebunan rakyat, dan bioteknologi pangan.
+					</p>
+				</div>
+			</div>
+
+			<div class="itb-journal-grid">
+				{foreach from=$journals item=journal}
+					{if $journal->getPath() == 'japt'}
+						{capture assign="url"}{url journal=$journal->getPath()}{/capture}
+						{assign var="thumb" value=$journal->getLocalizedData('journalThumbnail')}
+						{assign var="description" value=$journal->getLocalizedDescription()}
+						{assign var="path" value=$journal->getPath()}
+
+						<div class="itb-journal-card" id="journal-{$path}">
+							<div class="itb-journal-header">
+								<span class="itb-journal-acronym">{$path|upper}</span>
+								<span class="itb-journal-cat">Agroteknologi &amp; Pengolahan</span>
+							</div>
+
+							<div class="itb-journal-body">
+								<h3 class="itb-journal-title">
+									<a href="{$url}" rel="bookmark">
+										{$journal->getLocalizedName()|escape}
+									</a>
+								</h3>
+								{if $description}
+									<p class="itb-journal-desc">
+										{$description|strip_tags|truncate:220:"..."}
+									</p>
+								{/if}
+							</div>
+
+							<div class="itb-journal-footer">
+								<a href="{$url}" class="itb-action-link">
+									Kunjungi Jurnal <span class="itb-arrow">&nearr;</span>
+								</a>
+								<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="itb-action-sublink">
+									Terbitan Terbaru &rarr;
+								</a>
+							</div>
+						</div>
+					{/if}
+				{/foreach}
+			</div>
+		</section>
+
+	</div><!-- #directory -->
 
 	{* Bottom CTA Banner *}
 	<section class="itb-cta-banner">
 		<div class="itb-cta-inner">
 			<div class="itb-cta-text">
+				<div class="itb-cta-kicker">UNRI AGRIBUSINESS JOURNALS</div>
 				<h3 class="itb-cta-heading">
 					Membuka Akses terhadap Riset dan Publikasi Agribisnis Universitas Riau
 				</h3>

@@ -1,31 +1,45 @@
 /**
  * Agribisnis Professional Academic Theme
  * Open Journal Systems 3.5 LTS
- * Palette: Forest Green (#1b4332, #2d6a4f), Harvest Gold (#c8963e, #d4a017)
- * Layout: ITB Journals Pattern (Wide, Balanced, Clean Typography & Cards)
+ * Palette Specification:
+ * - #3D5B2A : Forest Olive Green (Primary brand, deep contrast)
+ * - #6B8E23 : Olive Drab (Primary light, secondary accents, hovers)
+ * - #B5C547 : Chartreuse / Sprout Green (Borders, subtle tags, focus rings)
+ * - #E6D64A : Harvest Gold / Warm Yellow (Accent highlights, top borders, CTAs)
+ * - #F2EFE6 : Warm Alabaster Cream (Global canvas background, soft fills)
+ * Layout: ITB Journals Pattern (Wide, Balanced, Clean Typography & Responsive Cards)
  */
 
 :root {
-  --agri-primary: #1b4332;
-  --agri-primary-dark: #122d22;
-  --agri-primary-light: #2d6a4f;
-  --agri-accent: #c8963e;
-  --agri-accent-light: #fdf6e7;
-  --agri-accent-hover: #b8860b;
-  --agri-bg: #f8faf9;
+  /* Exact User-Supplied Palette */
+  --agri-primary: #3D5B2A;
+  --agri-primary-dark: #273b1a;
+  --agri-primary-light: #6B8E23;
+  --agri-sprout: #B5C547;
+  --agri-accent: #E6D64A;
+  --agri-accent-hover: #d4c436;
+  --agri-bg: #F2EFE6;
   --agri-surface: #ffffff;
-  --agri-surface-subtle: #f1f5f2;
-  --agri-text: #1f2937;
-  --agri-text-muted: #4b5563;
-  --agri-text-light: #6b7280;
-  --agri-border: #e2e8f0;
-  --agri-border-strong: #cbd5e1;
+  --agri-surface-subtle: #faf8f2;
+
+  /* Typography & High-Contrast Neutrals */
+  --agri-text: #202b1b;
+  --agri-text-muted: #4e5a48;
+  --agri-text-light: #73806c;
+
+  /* Borders & Dividers */
+  --agri-border: #e0dcd1;
+  --agri-border-strong: #c8c2b3;
+
+  /* Typography Stacks */
   --agri-font-serif: Georgia, "Merriweather", "Times New Roman", serif;
   --agri-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing & Effects */
   --agri-radius: 10px;
-  --agri-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --agri-shadow-md: 0 6px 18px rgba(27, 67, 50, 0.07);
-  --agri-shadow-lg: 0 12px 32px rgba(27, 67, 50, 0.1);
+  --agri-shadow-sm: 0 1px 3px rgba(61, 91, 42, 0.05);
+  --agri-shadow-md: 0 6px 20px rgba(61, 91, 42, 0.08);
+  --agri-shadow-lg: 0 12px 32px rgba(61, 91, 42, 0.12);
 }
 
 * {
@@ -42,13 +56,13 @@ body {
 }
 
 /* ==========================================================================
-   KILL OJS DEFAULT NARROW RESTRICTIONS (Expand to Wide 1440px / 92vw)
+   GLOBAL RESET OF NARROW OJS DEFAULTS & REMOVAL OF UNWANTED LINES
    ========================================================================== */
 .pkp_structure_head {
   display: none !important; /* Hide old default stacked header in favor of modern itb-topbar */
 }
 
-/* Remove unwanted default OJS vertical border lines on left and right */
+/* Remove default vertical border lines on primary column */
 .pkp_structure_main::before,
 .pkp_structure_main::after,
 .pkp_structure_content::before,
@@ -61,6 +75,7 @@ body {
   border: none !important;
 }
 
+/* Expansive 1440px / 92vw container across all pages */
 .pkp_structure_content,
 .pkp_structure_main,
 .page_index_site,
@@ -79,13 +94,30 @@ body {
   margin-bottom: 72px !important;
 }
 
+/* Global Headings & Links */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--agri-primary);
+  font-family: var(--agri-font-serif);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--agri-primary);
+  transition: color 0.15s ease;
+}
+
+a:hover, a:focus {
+  color: var(--agri-primary-light);
+}
+
 /* ==========================================================================
-   Modern Topbar & Navbar (ITB Journals Layout: Clean, Horizontal, Balanced)
+   MODERN TOPBAR & NAVBAR (Clean, Professional, Aligned Right)
    ========================================================================== */
 .itb-topbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--agri-border);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  background-color: var(--agri-surface);
+  border-bottom: 2px solid var(--agri-sprout);
+  box-shadow: 0 1px 4px rgba(61, 91, 42, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -103,7 +135,7 @@ body {
   gap: 24px;
 }
 
-/* Left Brand Identity */
+/* Brand Identity */
 .itb-topbar-brand {
   display: flex;
   align-items: center;
@@ -151,7 +183,7 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Right Navigation Menu & Auth */
+/* Navigation Menu & Auth */
 .itb-topbar-nav {
   display: flex;
   align-items: center;
@@ -168,7 +200,7 @@ body {
 }
 
 .itb-menu-link {
-  color: #374151;
+  color: var(--agri-text);
   font-size: 0.915rem;
   font-weight: 500;
   padding: 8px 14px;
@@ -204,7 +236,7 @@ body {
 }
 
 .itb-auth-login:hover {
-  color: var(--agri-accent-hover);
+  color: var(--agri-primary-light);
   text-decoration: underline;
 }
 
@@ -226,7 +258,7 @@ body {
   background-color: var(--agri-primary-light);
   border-color: var(--agri-primary-light);
   color: #ffffff !important;
-  box-shadow: 0 3px 8px rgba(27, 67, 50, 0.2);
+  box-shadow: 0 3px 8px rgba(61, 91, 42, 0.2);
   text-decoration: none;
 }
 
@@ -251,11 +283,11 @@ body {
 }
 
 /* ==========================================================================
-   Dual-Panel Hero Section (ITB Layout: Open, Airy, Authoritative)
+   DUAL-PANEL HERO SECTION (Open, Airy, Academic)
    ========================================================================== */
 .itb-hero-section {
   background: transparent;
-  padding: 40px 0 52px;
+  padding: 36px 0 52px;
   margin-bottom: 24px;
 }
 
@@ -281,18 +313,20 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--agri-primary);
-  background-color: var(--agri-accent-light);
-  border: 1px solid rgba(200, 150, 62, 0.35);
+  background-color: var(--agri-surface);
+  border: 1px solid var(--agri-sprout);
   padding: 6px 14px;
   border-radius: 20px;
   width: fit-content;
+  box-shadow: var(--agri-shadow-sm);
 }
 
 .itb-badge-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   background-color: var(--agri-accent);
   border-radius: 50%;
+  display: inline-block;
 }
 
 .itb-hero-title {
@@ -318,12 +352,12 @@ body {
 }
 
 .itb-hero-card {
-  background: #ffffff;
+  background: var(--agri-surface);
   border: 1px solid var(--agri-border);
   border-top: 4px solid var(--agri-accent);
   border-radius: 12px;
   padding: 36px 32px;
-  box-shadow: 0 8px 30px rgba(27, 67, 50, 0.06);
+  box-shadow: var(--agri-shadow-md);
   width: 100%;
 }
 
@@ -374,7 +408,7 @@ body {
   background-color: var(--agri-primary-light);
   border-color: var(--agri-primary-light);
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.22);
+  box-shadow: 0 4px 12px rgba(61, 91, 42, 0.22);
 }
 
 .itb-btn-outline {
@@ -391,7 +425,7 @@ body {
 }
 
 /* ==========================================================================
-   Split Stat Bar (ITB Pattern: Dark Stat Box + Light Info Box)
+   SPLIT STAT BAR (Forest Olive Box + White Info Box)
    ========================================================================== */
 .itb-stat-bar {
   background: var(--agri-surface);
@@ -428,13 +462,13 @@ body {
 .itb-stat-label {
   font-size: 0.885rem;
   line-height: 1.35;
-  color: #f3f4f6;
+  color: #f0f4ec;
   font-weight: 500;
 }
 
 .itb-stat-info-box {
   padding: 22px 36px;
-  background: #ffffff;
+  background: var(--agri-surface);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -445,7 +479,7 @@ body {
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--agri-accent-hover);
+  color: var(--agri-primary-light);
   margin-bottom: 4px;
   text-transform: uppercase;
 }
@@ -458,7 +492,7 @@ body {
 }
 
 /* ==========================================================================
-   Section Headers (ITB Split: Left Title & Kicker, Right Helper Text)
+   SECTION HEADERS (Split: Left Title, Right Helper Text)
    ========================================================================== */
 .itb-section-header-split {
   display: flex;
@@ -480,7 +514,7 @@ body {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--agri-accent-hover);
+  color: var(--agri-primary-light);
   text-transform: uppercase;
 }
 
@@ -506,7 +540,7 @@ body {
 }
 
 /* ==========================================================================
-   Discipline / Subject Cluster Cards (4 Columns Spanning Wide Layout)
+   DISCIPLINE CLUSTER CARDS (4 Columns)
    ========================================================================== */
 .itb-disciplines-section {
   margin-bottom: 64px;
@@ -530,8 +564,8 @@ body {
 
 .itb-disc-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(27, 67, 50, 0.08);
-  border-color: var(--agri-accent);
+  box-shadow: var(--agri-shadow-md);
+  border-color: var(--agri-sprout);
 }
 
 .itb-disc-header {
@@ -542,7 +576,7 @@ body {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--agri-accent-hover);
+  color: var(--agri-primary-light);
   margin-bottom: 8px;
   text-transform: uppercase;
 }
@@ -583,7 +617,7 @@ body {
 
 .itb-disc-link:hover,
 .itb-disc-link:focus {
-  color: var(--agri-accent-hover) !important;
+  color: var(--agri-primary-light) !important;
 }
 
 .itb-disc-arrow {
@@ -591,7 +625,7 @@ body {
 }
 
 /* ==========================================================================
-   Directory Categories & Journal Cards (3 Columns Spanning Wide Layout)
+   DIRECTORY CATEGORIES & JOURNAL CARDS (3 Columns)
    ========================================================================== */
 .itb-directory-wrapper {
   margin-bottom: 64px;
@@ -645,9 +679,10 @@ body {
 .itb-journal-cat {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--agri-primary-light);
+  color: var(--agri-primary);
   background: var(--agri-surface-subtle);
-  padding: 5px 12px;
+  border: 1px solid var(--agri-border);
+  padding: 4px 12px;
   border-radius: 14px;
   white-space: nowrap;
 }
@@ -674,7 +709,7 @@ body {
 
 .itb-journal-title a:hover,
 .itb-journal-title a:focus {
-  color: var(--agri-accent-hover);
+  color: var(--agri-primary-light);
   text-decoration: underline;
 }
 
@@ -709,7 +744,7 @@ body {
 
 .itb-action-link:hover,
 .itb-action-link:focus {
-  color: var(--agri-accent-hover) !important;
+  color: var(--agri-primary-light) !important;
   text-decoration: underline;
 }
 
@@ -733,7 +768,7 @@ body {
 }
 
 /* ==========================================================================
-   Institutional CTA Banner (Full Width within Wide Container)
+   INSTITUTIONAL CTA BANNER
    ========================================================================== */
 .itb-cta-banner {
   background: linear-gradient(135deg, var(--agri-primary) 0%, var(--agri-primary-dark) 100%);
@@ -772,14 +807,14 @@ body {
 
 .itb-cta-subheading {
   font-size: 0.985rem;
-  color: #d1fae5;
+  color: #e4eedb;
   margin: 0;
   line-height: 1.6;
 }
 
 .itb-btn-cta {
   background-color: var(--agri-accent);
-  color: #ffffff !important;
+  color: var(--agri-primary-dark) !important;
   border: 1px solid var(--agri-accent);
   font-weight: 700;
   padding: 13px 26px;
@@ -790,17 +825,17 @@ body {
 .itb-btn-cta:focus {
   background-color: var(--agri-accent-hover);
   border-color: var(--agri-accent-hover);
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(200, 150, 62, 0.4);
+  color: var(--agri-primary-dark) !important;
+  box-shadow: 0 4px 14px rgba(230, 214, 74, 0.45);
 }
 
 /* ==========================================================================
-   Institutional UNRI Footer (footer.tpl)
+   INSTITUTIONAL FOOTER (footer.tpl)
    ========================================================================== */
 .itb-footer-wrapper {
-  background-color: #122019;
+  background-color: var(--agri-primary-dark);
   border-top: 4px solid var(--agri-accent);
-  color: #d1d5db;
+  color: #e2e8dd;
   padding: 56px 0 28px;
   margin-top: 60px;
   width: 100%;
@@ -819,7 +854,7 @@ body {
   gap: 48px;
   margin-bottom: 40px;
   padding-bottom: 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .itb-footer-brand {
@@ -831,7 +866,7 @@ body {
 
 .itb-footer-monogram {
   background-color: var(--agri-accent);
-  color: #122019;
+  color: var(--agri-primary-dark);
   font-weight: 900;
   font-size: 1.25rem;
   padding: 8px 14px;
@@ -849,20 +884,20 @@ body {
 
 .itb-footer-dept {
   font-size: 0.885rem;
-  color: #9ca3af;
+  color: #b7c7b0;
 }
 
 .itb-footer-desc {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #9ca3af;
+  color: #c5d4be;
   margin: 0 0 16px;
 }
 
 .itb-footer-contact {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #9ca3af;
+  color: #c5d4be;
   margin: 0;
 }
 
@@ -882,7 +917,7 @@ body {
   color: #ffffff;
   margin: 0 0 18px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(200, 150, 62, 0.4);
+  border-bottom: 1px solid rgba(230, 214, 74, 0.4);
 }
 
 .itb-indexing-list {
@@ -896,16 +931,16 @@ body {
 
 .itb-indexing-list li {
   font-size: 0.885rem;
-  color: #d1d5db;
+  color: #e2e8dd;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .itb-index-badge {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--agri-accent-light);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(230, 214, 74, 0.35);
+  color: var(--agri-accent);
   font-size: 0.74rem;
   font-weight: 700;
   padding: 2px 8px;
@@ -922,7 +957,7 @@ body {
 }
 
 .itb-footer-nav a {
-  color: #d1d5db !important;
+  color: #e2e8dd !important;
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.15s ease;
@@ -936,10 +971,10 @@ body {
 
 .itb-license-note {
   font-size: 0.825rem;
-  color: #9ca3af;
+  color: #b7c7b0;
   line-height: 1.5;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
 }
 
@@ -948,13 +983,13 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #9cb093;
   flex-wrap: wrap;
   gap: 14px;
 }
 
 .itb-footer-platform a {
-  color: #9ca3af !important;
+  color: #c5d4be !important;
   text-decoration: none;
 }
 
@@ -963,7 +998,112 @@ body {
 }
 
 /* ==========================================================================
-   Responsive Adaptations
+   GLOBAL INNER PAGES STYLING (Consistency Across All OJS Pages)
+   ========================================================================== */
+.current_issue {
+  background: var(--agri-surface);
+  border: 1px solid var(--agri-border);
+  border-top: 4px solid var(--agri-accent);
+  border-radius: var(--agri-radius);
+  padding: 32px;
+  margin-bottom: 36px;
+  box-shadow: var(--agri-shadow-sm);
+}
+
+.current_issue h2 {
+  font-size: 1.6rem;
+  color: var(--agri-primary);
+  margin-top: 0;
+}
+
+.obj_article_summary {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--agri-border);
+}
+
+.obj_article_summary:last-child {
+  border-bottom: none;
+}
+
+.obj_article_summary .title {
+  font-family: var(--agri-font-serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.obj_article_summary .title a {
+  color: var(--agri-primary);
+  text-decoration: none;
+}
+
+.obj_article_summary .title a:hover {
+  color: var(--agri-primary-light);
+  text-decoration: underline;
+}
+
+.obj_article_summary .authors {
+  color: var(--agri-text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.obj_galley_link {
+  display: inline-flex !important;
+  align-items: center;
+  background-color: var(--agri-surface-subtle) !important;
+  color: var(--agri-primary) !important;
+  border: 1px solid var(--agri-sprout) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  min-height: 40px;
+  transition: all 0.15s ease;
+}
+
+.obj_galley_link:hover,
+.obj_galley_link:focus {
+  background-color: var(--agri-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--agri-primary) !important;
+}
+
+.cmp_button,
+button.cmp_button,
+.block_make_submission a {
+  background-color: var(--agri-primary) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--agri-primary) !important;
+  border-radius: 6px !important;
+  padding: 8px 18px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.cmp_button:hover,
+button.cmp_button:hover,
+.block_make_submission a:hover {
+  background-color: var(--agri-primary-light) !important;
+  border-color: var(--agri-primary-light) !important;
+}
+
+.cmp_breadcrumbs a {
+  color: var(--agri-primary) !important;
+  text-decoration: none;
+}
+
+.cmp_breadcrumbs a:hover {
+  color: var(--agri-primary-light) !important;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS
    ========================================================================== */
 @media (max-width: 1200px) {
   .itb-disciplines-grid {
